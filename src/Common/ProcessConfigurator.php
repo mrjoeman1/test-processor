@@ -3,6 +3,7 @@
 namespace Processor\Common;
 
 use Processor\Config\Config;
+use Processor\Exceptions\ProcessConfiguratorException;
 
 /**
  * Director for process building from a config
@@ -42,12 +43,18 @@ class ProcessConfigurator {
 	 * Makes a Process from a Config
 	 *
 	 * @return Process
+	 * @throws ProcessConfiguratorException
 	 */
 	public function make(): Process {
 		$inputs = $this->config->getInputs();
 		$this->builder->setInputs($inputs);
 		foreach ($this->config->getSteps() as $step) {
-			$operationName = $step['name'];
+			if (!isset($step['operationName']) || !isset($step['params'])) {
+				throw new ProcessConfiguratorException(
+					"Wrong config provided. Operation name and params should be set for the each step."
+				);
+			}
+			$operationName = $step['operationName'];
 			$operationParams = $step['params'];
 			$this->builder->addStep($operationName, $operationParams);
 		}

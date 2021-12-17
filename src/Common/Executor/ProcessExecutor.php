@@ -61,7 +61,7 @@ class ProcessExecutor {
 	 */
 	public function execute() {
 		if (!$this->process) {
-			throw new ExecutionException('Processes is not set');
+			throw new ExecutionException('Process is not set');
 		}
 		$processResult = null;
 		// execute each step

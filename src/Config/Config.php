@@ -71,7 +71,7 @@ class Config {
 	 */
 	public function addStep(string $operationName, array $operationParams): void {
 		$this->steps[] = [
-			'name' => $operationName,
+			'operationName' => $operationName,
 			'params' => $operationParams
 		];
 	}

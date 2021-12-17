@@ -26,7 +26,7 @@ class Processor {
 	protected ProcessConfigurator $processConfigurator;
 
 	/**
-	 * @var ProcessExecutor Executor of processes
+	 * @var ProcessExecutor Process executor
 	 */
 	protected ProcessExecutor $processExecutor;
 
@@ -40,8 +40,8 @@ class Processor {
 	 */
 	public function __construct(ConfigInterpreterInterface $configInterpreter) {
 		$this->configInterpreter = $configInterpreter;
-		$operationFactory = new OperationFactory();
 		$this->processConfigurator = new ProcessConfigurator();
+		$operationFactory = new OperationFactory();
 		$this->processExecutor = new ProcessExecutor($operationFactory);
 		$this->resultsWriter = new FileWriter();
 	}
