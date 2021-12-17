@@ -81,7 +81,7 @@ class ConfigInterpreter implements ConfigInterpreterInterface {
 			$line = trim($line);
 			$preparedLine = strtoupper($line);
 			// skip commented and empty lines
-			if ($preparedLine === '' || $this->isCommentedLine($preparedLine)) {
+			if ($preparedLine === '' || $this->isLineCommentedOut($preparedLine)) {
 				continue;
 			}
 			// setup current section for next lines
@@ -187,12 +187,12 @@ class ConfigInterpreter implements ConfigInterpreterInterface {
 	}
 
 	/**
-	 * Is line commented
+	 * Is line commented out
 	 *
 	 * @param string $line Line from file
 	 * @return bool
 	 */
-	private function isCommentedLine(string $line): bool {
+	private function isLineCommentedOut(string $line): bool {
 		return strpos($line, self::COMMENT_SYMBOL) === 0;
 	}
 
