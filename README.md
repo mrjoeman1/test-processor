@@ -71,6 +71,7 @@ Default config format
 
 [PROCESS]
 <operand-a> <operation> <operand-b>
+...
 ```
 
 Example of config
@@ -82,7 +83,7 @@ Example of config
 [INPUT]
 $a = 10
 $b = 55
-$c = 17
+$x = 17
 
 [OUTPUT]
 results/test_formula.log
