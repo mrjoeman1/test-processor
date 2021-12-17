@@ -54,7 +54,7 @@ Default config format
 # E.g. $a or $myVariable (only eng characters)
 
 [INPUT]
-<variable-name> = <variable-value>
+$<variable-name> = <variable-value>
 ...
 
 # Section describes path to file where result of execution will be saved
@@ -68,11 +68,11 @@ Default config format
 # SUB - math "-"
 # MUL - math "*"
 # POW - math "^"
-# <operand-a>, <operand-b> could be a digit, variable ($<variable-name>) 
+# <operand> could be a digit, variable ($<variable-name>) 
 # or result of a previos step (&<step-idx>), e.g. &1 is result of first step 
 
 [PROCESS]
-<operand-a> <operation> <operand-b>
+<operation> <operand>,<operand>,<operand>,...
 ...
 ```
 
@@ -91,8 +91,8 @@ $x = 17
 results/test_formula.log
 
 [PROCESS]
-$x POW 2
-$a MUL &1
-$b MUL $x
-&2 ADD &3
+POW $x2,2
+MUL $a,&1
+MUL $b,$x
+ADD &2,&3
 ```

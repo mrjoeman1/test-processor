@@ -10,7 +10,7 @@ $x = 17
 results/test_formula.log
 
 [PROCESS]
-$x POW 2
-$a MUL &1
-$b MUL $x
-&2 ADD &3
+POW $x,2
+MUL $a,&1
+MUL $b,$x
+ADD &2,&3

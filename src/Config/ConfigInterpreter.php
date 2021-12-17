@@ -33,7 +33,7 @@ class ConfigInterpreter implements ConfigInterpreterInterface {
 	/**
 	 * Section tag for process step definition
 	 */
-	const DEFINITION_STEP_REGEXP = '/(?<operandA>[^\s]+)\s*(?<operation>[^\s]+)\s*(?<operandB>[^\s]+)/i';
+	const DEFINITION_STEP_REGEXP = '/(?<operation>[^\s]+)\s+(?<operands>.+)/i';
 
 	/**
 	 * Comment symbol
@@ -156,20 +156,18 @@ class ConfigInterpreter implements ConfigInterpreterInterface {
 		// match step operation name and parameters from line
 		$matches = [];
 		preg_match(self::DEFINITION_STEP_REGEXP, $line, $matches);
-		// operandB is optional
-		if (!isset($matches['operandA'])) {
-			throw new ConfigException("$lineNumber: Operand-A should be set");
-		}
 		if (!isset($matches['operation'])) {
 			throw new ConfigException("$lineNumber: Operation is not defined");
 		}
-
-		$operationParams = [];
-		$operationParams[] = $matches['operandA'];
-		if (isset($matches['operandB'])) {
-			$operationParams[] = $matches['operandB'];
+		// at least one operand should be set
+		if (empty($matches['operands'])) {
+			throw new ConfigException("$lineNumber: Operands should be set");
 		}
+
 		$operationName = $matches['operation'];
+		$operandsExpression = str_replace(' ', '', $matches['operands']);
+		$operationParams = explode(',', $operandsExpression);
+
 		$this->config->addStep($operationName, $operationParams);
 	}
 
