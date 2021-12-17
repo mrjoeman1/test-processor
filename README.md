@@ -4,6 +4,8 @@ Processor
 =======
 A simple library to execute process described by a file.
 
+[![Diagram](https://drive.google.com/file/d/1rRwwtHbplkQKzCem9LX8QCsCBLPF_Sh5/view?usp=sharing)](https://drive.google.com/file/d/1rRwwtHbplkQKzCem9LX8QCsCBLPF_Sh5/view?usp=sharing)
+
 Example
 -------
 ```php
