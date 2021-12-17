@@ -27,6 +27,6 @@ class OperationFactory implements OperationFactoryInterface {
 			case self::OPERATION_POW:
 				return new PowOperation($params);
 		}
-		throw new OperationException("Unsupported type of operation {$name}");
+		throw new OperationException("Unsupported operation {$name}");
 	}
 }

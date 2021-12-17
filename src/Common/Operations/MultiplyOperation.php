@@ -9,7 +9,7 @@ class MultiplyOperation extends MathOperation {
 	/**
 	 * @inheritdoc
 	 */
-	protected string $name = 'MULTIPLY';
+	protected string $name = 'MUL';
 
 	/**
 	 * @inheritDoc
