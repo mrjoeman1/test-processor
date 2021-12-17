@@ -11,10 +11,10 @@ use Processor\Processor;
 use Processor\Config\ConfigInterpreter;
 
 // You can to implement your own config interpreter for other file formats.
-// A custom interpreter can provide a config from any type of storage (File, DB, Array and etc.):
+// A custom interpreter may provide a config from an any type of storage (File, DB, Array and etc.):
 // - Just implement ConfigInterpreterInterface
-// - In your config format you able to use token "$<name>" to access input variables in operations,
-//   and token "&<idx>" to access result of previous executed steps 
+// - In your config format you are able to use token "$<name>" to access input variables in operations,
+//   and token "&<idx>" to access result of a previous executed step
 
 $configInterpreter = new ConfigInterpreter("relative-path-to-config-file");
 
@@ -28,12 +28,11 @@ Advanced examples
 use Processor\Processor;
 use Processor\Config\ConfigInterpreter;
 
-// You can to implement your own types of operations 
-// 1) In a new operation implement OperationInterface.
+// You can support your own types of operations 
+// 1) In each new operation implement OperationInterface.
 // 2) Create a new factory by implementation OperationFactoryInterface.
 // Or extend OperationFactory class to keep support the list of default operations 
 
-// define wich a file format we want to use for process description
 $operationFactory = new MyOperationFactory();
 $configInterpreter = new ConfigInterpreter("path-to-config-file");
 
@@ -42,7 +41,7 @@ $processor->setOperationFactory($operationFactory);
 $processor->process();
 ```
 
-Default process configuration format
+Default config format
 -------
 ```
 # This config supports only math operations.
@@ -72,6 +71,7 @@ Default process configuration format
 
 [PROCESS]
 <operand-a> <operation> <operand-b>
+...
 ```
 
 Example of config
@@ -83,7 +83,7 @@ Example of config
 [INPUT]
 $a = 10
 $b = 55
-$c = 17
+$x = 17
 
 [OUTPUT]
 results/test_formula.log
