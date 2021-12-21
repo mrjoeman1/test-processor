@@ -49,7 +49,7 @@ Default config format
 # This config supports only math operations.
 # Symbol for comments is "#" (at beginning of a line)
 
-# Section describes input variables that cab be accessed 
+# Section describes input variables that can be accessed 
 # on any step of process. To access them use syntax $<variable-name>.
 # E.g. $a or $myVariable (only eng characters)
 
@@ -91,7 +91,7 @@ $x = 17
 results/test_formula.log
 
 [PROCESS]
-POW $x2,2
+POW $x,2
 MUL $a,&1
 MUL $b,$x
 ADD &2,&3
